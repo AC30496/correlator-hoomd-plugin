@@ -23,6 +23,6 @@ message(STATUS "Install plugin to: " ${PYTHON_MODULE_BASE_DIR})
 # add subdirectories
 add_subdirectory(${PROJECT_NAME})
 
-if (BUILD_TESTING)
-    add_subdirectory(test-py)
-endif
+if(BUILD_TESTING)
+    add_subdirectory(test)
+endif(BUILD_TESTING)
