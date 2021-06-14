@@ -53,16 +53,15 @@ A quick example:
 import hoomd
 from hoomd import md
 from hoomd import correlator
-hoomd.context.initialize()
+hoomd.context.initialize(None)
 
 hoomd.init.create_lattice(unitcell=hoomd.lattice.sq(a=2.0), n=[1, 2])
-group_all = group.all()
-all = group_all
+all = hoomd.group.all()
 md.integrate.mode_standard(dt=0.01)
 md.integrate.langevin(group=all, kT=1, seed=234)
 
-corr = hoomd.correlator.analyze.autocorrelate(filename="corr.log", quantities="pressure", period=1, eval_period=10)
-run(100)
+corr = correlator.analyze.autocorrelate(filename="corr.log", quantities=["pressure",], period=1, eval_period=10)
+hoomd.run(100)
 corr.evaluate()
 ```
 
